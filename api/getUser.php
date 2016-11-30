@@ -1,7 +1,7 @@
 <?php
-header('Content-Type: text/html; charset=utf-8');
 date_default_timezone_set('Asia/Bangkok');
 include "../lib/std.php";
+include "../lib/helper.php";
 include "../lib/dbConnector.php";
 include "../model/user.php";
 $obj = new User();
@@ -49,4 +49,3 @@ $resultArray = array();
 	}
 	
 echo json_encode($resultArray);
-?>
