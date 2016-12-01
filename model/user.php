@@ -8,7 +8,7 @@ class User {
         $this->sql = "INSERT INTO user(`user_id`, `username`, `password`, `user_image`, `type`) VALUES (NULL, '{$data["username"]}', '{$data["password"]}', '{$data["user_image"]}', '{$data["type"]}')";
         $query = mysql_query($this->sql);
         if ($query) {
-            return true;
+            return mysql_insert_id();
         } else {
             return false;
         }
