@@ -1,5 +1,5 @@
 <?php
-if(@move_uploaded_file($_FILES["filUpload"]["tmp_name"],"../upload/".$_FILES["filUpload"]["name"]))
+if(@move_uploaded_file($_FILES["filUpload"]["tmp_name"],"../images/".$_FILES["filUpload"]["name"]))
 {
 	$arr["StatusID"] = "1";
 	$arr["Error"] = "";
