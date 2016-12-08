@@ -6,7 +6,7 @@
 //----------------------------
 $user = "root";
 $pass = "";
-$dbName = "oldster_db";
+$dbName = "oldermore_db";
 //----------------------------
 $host = "localhost";
 
