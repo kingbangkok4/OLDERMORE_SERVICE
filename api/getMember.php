@@ -31,11 +31,11 @@ $resultArray = array();
 		//}
 	}else{
             $arrCol = array();
-            $arrCol["member_id"] = $row["member_id"];
-            $arrCol["member_name"] = $row["member_name"];
-            $arrCol["member_mobile"] = $row["member_mobile"];
-            $arrCol["member_address"] = $row["member_address"];
-            $arrCol["member_email"] = $row["member_email"];
+            $arrCol["member_id"] = 0;
+            $arrCol["member_name"] = "";
+            $arrCol["member_mobile"] = "";
+            $arrCol["member_address"] = "";
+            $arrCol["member_email"] = "";
 			
             $arrCol["status"] = "0";
             $arrCol["error"] = "ไม่พบข้อมูล";
