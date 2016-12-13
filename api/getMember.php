@@ -9,7 +9,7 @@ $dateNow = date("d",strtotime(date("Y-m-d")));
 
 $user_id =  $_REQUEST["user_id"];
 
-$rows = $obj->read(" user_id = {$user_id} ");
+$rows = $obj->read(" u.user_id = {$user_id} ");
 
 $resultArray = array();
 
@@ -22,7 +22,8 @@ $resultArray = array();
             $arrCol["member_name"] = $row["member_name"];
             $arrCol["member_mobile"] = $row["member_mobile"];
             $arrCol["member_address"] = $row["member_address"];
-            $arrCol["member_email"] = $row["member_email"];	
+            $arrCol["member_email"] = $row["member_email"];
+            $arrCol["user_image"] = $row["user_image"];
 			    
             $arrCol["status"] = "1";
             $arrCol["error"] = "";
@@ -36,6 +37,7 @@ $resultArray = array();
             $arrCol["member_mobile"] = "";
             $arrCol["member_address"] = "";
             $arrCol["member_email"] = "";
+            $arrCol["user_image"] = "";
 			
             $arrCol["status"] = "0";
             $arrCol["error"] = "ไม่พบข้อมูล";

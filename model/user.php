@@ -38,13 +38,13 @@ class User {
         $this->sql = "SELECT * FROM user WHERE $condition";
         $query = mysql_query($this->sql);
         if ($query) {
-        	$result = array();
-        	while ($row = mysql_fetch_array($query, MYSQL_ASSOC)) {
-        		$result[] = $row;
-        	}
-        	return $result;
+            $result = array();
+            while ($row = mysql_fetch_array($query, MYSQL_ASSOC)) {
+                $result[] = $row;
+            }
+            return $result;
         } else {
-        	return false;
+            return false;
         }
     }
 
