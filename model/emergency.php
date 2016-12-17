@@ -16,7 +16,7 @@ class Emergency {
     }
 
     public function update($set, $condition) {
-        $this->sql = "UPDATE emergency SET {$set} WHERE {$condition}";
+        $this->sql = " UPDATE `emergency` SET {$set} WHERE {$condition} ";
         mysql_query("SET NAMES 'utf8'");
         $query = mysql_query($this->sql);
         if ($query) {
@@ -40,7 +40,7 @@ class Emergency {
     }
 
     public function read($condition = " 1=1 ") {
-        $this->sql = "SELECT * from emergency ODER BY emergency_id WHERE $condition";
+        $this->sql = "SELECT * from emergency WHERE $condition ORDER BY emergency_id ";
         mysql_query("SET NAMES 'utf8'");
         $query = mysql_query($this->sql);
         if ($query) {
