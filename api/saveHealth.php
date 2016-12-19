@@ -22,7 +22,9 @@ $data = array(
 );
 
 if ($data["health_id"] == "") {
-    $status = $obj->insert($data);
+    $status = $obj->insert($data);   
+    
+    //echo "insert : ".$status."<br/>";
 } else {
     $status = $obj->update(" con_disease = '{$data["con_disease"]}', "
     . "con_disease = '{$data["con_disease"]}', "
@@ -32,6 +34,8 @@ if ($data["health_id"] == "") {
     . "hotel = '{$data["hotel"]}', "
     . "hotel_mobile = '{$data["hotel_mobile"]}' "
     , " health_id = {$data["health_id"]} ");
+    
+    //echo "update : ".$status."<br/>";
 }
 
 /* $rows = $obj->read(" emergency_name = '{$data["emergency_name"]}' ");
