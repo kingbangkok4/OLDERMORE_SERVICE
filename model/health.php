@@ -5,14 +5,14 @@ class Health {
     public $sql;
 
     public function insert($data) {
-        $this->sql = "INSERT INTO health (`health_id`, `con_disease`, `	drug_allergy`, `doctor`, `doctor_mobile`, `hotel`, `hotel_mobile`, `user_id`) "
+        $this->sql = "INSERT INTO health (`health_id`, `con_disease`, `drug_allergy`, `doctor`, `doctor_mobile`, `hotel`, `hotel_mobile`, `user_id`) "
                 . "VALUES (NULL, '{$data["con_disease"]}', '{$data["drug_allergy"]}', '{$data["doctor"]}', '{$data["doctor_mobile"]}', '{$data["hotel"]}', '{$data["hotel_mobile"]}', {$data["user_id"]})";
         mysql_query("SET NAMES 'utf8'");
         $query = mysql_query($this->sql);
         if ($query) {
             return true;
         } else {
-            return false;
+            return $this->sql;
         }
     }
 
