@@ -32,7 +32,7 @@ $resultArray = array();
 		//}
 	}else{
             $arrCol = array();
-            $arrCol["member_id"] = 0;
+            $arrCol["member_id"] = "";
             $arrCol["member_name"] = "";
             $arrCol["member_mobile"] = "";
             $arrCol["member_address"] = "";
