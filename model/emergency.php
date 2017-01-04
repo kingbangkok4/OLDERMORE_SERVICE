@@ -26,11 +26,8 @@ class Emergency {
         }
     }
 
-    public function delete($user_ref) {
-        $this->sql = "DELETE FROM emergency WHERE user_ref = {$user_ref}";
-        $query = mysql_query($this->sql);
-
-        $this->sql = "DELETE FROM emergency WHERE id = {$user_ref}";
+    public function delete($data) {
+        $this->sql = "DELETE FROM `emergency` WHERE emergency_id = {$data["emergency_id"]} ";
         $query = mysql_query($this->sql);
         if ($query) {
             return true;

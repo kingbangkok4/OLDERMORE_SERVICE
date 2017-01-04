@@ -26,11 +26,11 @@ class Member {
         }
     }
 
-    public function delete($user_ref) {
-        $this->sql = "DELETE FROM tb_employee WHERE user_ref = {$user_ref}";
+    public function delete($id) {
+        $this->sql = "DELETE FROM member WHERE user_id = {$id}";
         $query = mysql_query($this->sql);
 
-        $this->sql = "DELETE FROM tb_user WHERE id = {$user_ref}";
+        $this->sql = "DELETE FROM user WHERE user_id = {$id}";
         $query = mysql_query($this->sql);
         if ($query) {
             return true;
