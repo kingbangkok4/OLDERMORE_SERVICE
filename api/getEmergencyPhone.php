@@ -4,11 +4,12 @@ date_default_timezone_set('Asia/Bangkok');
 include "../lib/std.php";
 include "../lib/helper.php";
 include "../lib/dbConnector.php";
-include "../model/post.php";
-$obj = new Post();
+include "../model/emergencyPhone.php";
+$obj = new EmergencyPhone();
 $dateNow = date("d", strtotime(date("Y-m-d")));
 
-$rows = $obj->read(" f.user_id = {$_REQUEST["user_id"]} ");
+//$user_id = $_REQUEST["user_id"];
+$rows = $obj->read();
 
 $resultArray = array();
 if ($rows != false) {
@@ -16,12 +17,9 @@ if ($rows != false) {
         //$row = $rows[0];						
         $arrCol = array();
         $arrCol["id"] = $row["id"];
-        $arrCol["name"] = $row["member_name"];
         $arrCol["image"] = $row["image"];
-        $arrCol["status"] = $row["status"];       
-        $arrCol["profilePic"] = $row["user_image"];
-        $arrCol["timeStamp"] = $row["timeStamp"];
-        $arrCol["url"] = $row["url"];
+        $arrCol["mobile"] = $row["mobile"]; 
+        $arrCol["timestamp"] = $row["timestamp"];
         array_push($resultArray, $arrCol);
     }
 }
