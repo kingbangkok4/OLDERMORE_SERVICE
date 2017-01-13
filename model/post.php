@@ -35,12 +35,13 @@ class Post {
             return false;
         }
     }
+    
 
     public function read($condition = " 1=1 ") {
         $this->sql = "SELECT p.id, m.member_name, p.image, p.status, p.url, p.user_id, p.timeStamp, u.user_image "
                 . "FROM friend f INNER JOIN post p ON f.friend_id = p.user_id INNER JOIN user u ON p.user_id = u.user_id "
                 . "INNER JOIN member m ON p.user_id = m.user_id "
-                . "WHERE $condition ORDER BY timeStamp DESC ";
+                . "WHERE $condition ORDER BY p.id DESC ";
         mysql_query("SET NAMES 'utf8'");
         $query = mysql_query($this->sql);
         if ($query) {

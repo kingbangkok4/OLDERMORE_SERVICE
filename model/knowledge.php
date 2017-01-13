@@ -1,11 +1,11 @@
 <?php
 
-class Friend {
+class Knowledge {
 
     public $sql;
 
     public function insert($data) {
-        $this->sql = "INSERT INTO friend (`id`, `user_id`, `friend_id`) VALUES (NULL, {$data["user_id"]}, {$data["friend_id"]} )";
+        $this->sql = "INSERT INTO knowledge (`id`, `image`, `status`, `user_id`) VALUES (NULL, '{$data["image"]}', '{$data["status"]}', {$data["user_id"]} )";
         mysql_query("SET NAMES 'utf8'");
         $query = mysql_query($this->sql);
         if ($query) {
@@ -16,7 +16,7 @@ class Friend {
     }
 
     public function update($set, $condition) {
-        $this->sql = " UPDATE `friend` SET {$set} WHERE {$condition} ";
+        $this->sql = " UPDATE `knowledge` SET {$set} WHERE {$condition} ";
         mysql_query("SET NAMES 'utf8'");
         $query = mysql_query($this->sql);
         if ($query) {
@@ -26,8 +26,8 @@ class Friend {
         }
     }
 
-    public function delete($condition) {
-        $this->sql = "DELETE FROM `friend` WHERE {$condition} ";
+    public function delete($data) {
+        $this->sql = "DELETE FROM `knowledge` WHERE id = {$data["id"]} ";
         $query = mysql_query($this->sql);
         if ($query) {
             return true;
@@ -35,12 +35,10 @@ class Friend {
             return false;
         }
     }
+    
 
     public function read($condition = " 1=1 ") {
-        $this->sql = "SELECT f.id, f.friend_id, u.user_image, m.member_name "
-                . " FROM friend f INNER JOIN user u ON f.friend_id = u.user_id "
-                . " INNER JOIN member m ON f.friend_id = m.user_id "
-                . "  WHERE {$condition} ";
+        $this->sql = "SELECT * FROM knowledge WHERE $condition ORDER BY id DESC ";
         mysql_query("SET NAMES 'utf8'");
         $query = mysql_query($this->sql);
         if ($query) {
