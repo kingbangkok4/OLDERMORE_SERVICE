@@ -10,7 +10,6 @@ $obj = new Friend();
  
 //$user_id = 13;
 $user_id = $_REQUEST["user_id"];
-$friend = $_REQUEST["friend"];
 $search = $_REQUEST["search"];
 $rows = $obj->read(" f.user_id = {$user_id} AND f.friend_id <> {$user_id} AND m.member_name LIKE '%{$search}%' ");
 
@@ -23,6 +22,7 @@ if ($rows != false) {
         $arrCol["friend_id"] = $row["friend_id"];
         $arrCol["user_image"] = $row["user_image"];
         $arrCol["member_name"] = $row["member_name"];
+        $arrCol["member_mobile"] = $row["member_mobile"];
         array_push($resultArray, $arrCol);
     }
 }

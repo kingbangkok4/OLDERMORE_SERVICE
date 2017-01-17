@@ -7,27 +7,37 @@ include "../lib/dbConnector.php";
 include "../model/friend.php";
 $obj = new Friend();
 //$dateNow = date("d",strtotime(date("Y-m-d")));
-
-$data_user = array(
+$rows = $obj->read(" f.user_id = {$_REQUEST["user_id"]} AND f.friend_id = {$_REQUEST["friend_id"]} ");
+$resultArray = array();
+if ($rows == false) {
+    $data_user = array(
     "user_id" => $_REQUEST["user_id"],
     "friend_id" => $_REQUEST["friend_id"]
-);
-$status = $obj->insert($data_user);
+    );
+    $status = $obj->insert($data_user);
 
-$data_friend = array(
-    "user_id" => $_REQUEST["friend_id"],
-    "friend_id" => $_REQUEST["user_id"]
-);
-$status = $obj->insert($data_friend);
-
-$resultArray = array();
-if ($status == true) {
-    $arrCol = array();
-    $arrCol["status"] = "บันทึกสำเร็จ";
-    array_push($resultArray,$arrCol);
-}else{
-    $arrCol = array();
-    $arrCol["status"] = "บันทึกไม่สำเร็จ เกิดข้อผิดพลาด !";
-    array_push($resultArray,$arrCol);
-}	
+    $data_friend = array(
+        "user_id" => $_REQUEST["friend_id"],
+        "friend_id" => $_REQUEST["user_id"]
+    );
+    $status = $obj->insert($data_friend);
+    
+    if ($status == true) {
+        $arrCol = array();
+        $arrCol["status"] = "1";
+        $arrCol["error"] = "บันทึกสำเร็จ";
+        array_push($resultArray,$arrCol);
+    }else{
+        $arrCol = array();
+        $arrCol["status"] = "0";
+        $arrCol["error"] = "บันทึกไม่สำเร็จ เกิดข้อผิดพลาด !";
+        array_push($resultArray,$arrCol);
+    }
+}  else {
+     $arrCol = array();
+     $arrCol["status"] = "0";
+     $arrCol["error"] = "คุณมีเพื่อนคนนี้อยู่แล้ว";
+     array_push($resultArray,$arrCol);
+}
+	
 echo json_encode($resultArray);
