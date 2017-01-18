@@ -9,7 +9,8 @@ $obj = new Friend();
 //$dateNow = date("d",strtotime(date("Y-m-d")));
 $resultArray = array();
     $friend_id = $_REQUEST["friend_id"];
-    $status = $obj->update(" favorite = 1 ", " id = {$friend_id} ");
+    $favorite = $_REQUEST["favorite"];
+    $status = $obj->update(" favorite = {$favorite} ", " id = {$friend_id} ");
     if ($status == true) {
         $arrCol = array();
         $arrCol["status"] = "1";
