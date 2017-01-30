@@ -27,8 +27,18 @@ class Health {
         }
     }
     
+    public function delete($data) {
+        $this->sql = "DELETE FROM `health` WHERE health_id = {$data["health_id"]} ";
+        $query = mysql_query($this->sql);
+        if ($query) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     public function read($condition = " 1=1") {
-        $this->sql = "SELECT * from health WHERE $condition";
+        $this->sql = "SELECT * from health WHERE $condition ORDER BY health_id ";
         mysql_query("SET NAMES 'utf8'");
         $query = mysql_query($this->sql);
         if ($query) {
